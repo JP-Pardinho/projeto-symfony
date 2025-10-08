@@ -1,0 +1,9 @@
+{# templates/mensagens.html.twig #}
+
+{% for label, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="alert alert-{{ label }} mt-3"> {# Adicionei uma margem para ficar mais espaçado #}
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}

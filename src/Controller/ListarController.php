@@ -1,24 +1,25 @@
 <?php
 
-namespace App\Controller\Categoria;
+namespace App\Controller;
 
 use App\Repository\CategoriaRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-final class CadastrarCategoriaController extends AbstractController
+final class ListarController extends AbstractController
 {
     public function __construct(
         private CategoriaRepository $categoriaRepository
-    ) {  
+    ) {
     }
+    
 
-    #[Route('/categorias/cadastrar', name: 'cadastrar_categoria_show', methods:'GET')]
+    #[Route('categorias', name: 'listar_categorias', methods:'GET')]
     public function show(): Response
     {
-        return $this->render('app/categoria/cadastrarCategoria.html.twig');
+        return $this->render('app/categoria/listar.html.twig', [
+            'categorias' => $this->categoriaRepository->findAll(),
+        ]);
     }
-
-    
 }
