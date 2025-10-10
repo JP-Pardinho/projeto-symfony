@@ -38,4 +38,10 @@ class UsuarioRepository extends ServiceEntityRepository implements PasswordUpgra
         $this->getEntityManager()->persist($usuario);
         $this->getEntityManager()->flush();
     }
+
+    public function remover(Usuario $usuario): void
+    {
+        $this->getEntityManager()->remove($usuario);
+        $this->getEntityManager()->flush();
+    }
 }
