@@ -21,19 +21,22 @@ class Produto
     private ?string $descricao = null;
 
     #[ORM\Column]
-    private ?int $categoria_id = null;
+    private ?int $categoriaId = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTime $data_cadastro = null;
+    private ?\DateTime $dataCadastro = null;
 
     #[ORM\Column]
-    private ?int $quantidade_inicial = null;
+    private ?int $quantidadeInicial = null;
 
     #[ORM\Column]
     private ?float $valor = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $url = null;
+
+    #[ORM\Column]
+    private ?int $quantidadeDisponivel = null;
 
     public function getId(): ?int
     {
@@ -66,36 +69,36 @@ class Produto
 
     public function getCategoriaId(): ?int
     {
-        return $this->categoria_id;
+        return $this->categoriaId;
     }
 
-    public function setCategoriaId(int $categoria_id): static
+    public function setCategoriaId(int $categoriaId): static
     {
-        $this->categoria_id = $categoria_id;
+        $this->categoriaId = $categoriaId;
 
         return $this;
     }
 
     public function getDataCadastro(): ?\DateTime
     {
-        return $this->data_cadastro;
+        return $this->dataCadastro;
     }
 
-    public function setDataCadastro(\DateTime $data_cadastro): static
+    public function setDataCadastro(\DateTime $dataCadastro): static
     {
-        $this->data_cadastro = $data_cadastro;
+        $this->dataCadastro = $dataCadastro;
 
         return $this;
     }
 
     public function getQuantidadeInicial(): ?int
     {
-        return $this->quantidade_inicial;
+        return $this->quantidadeInicial;
     }
 
-    public function setQuantidadeInicial(int $quantidade_inicial): static
+    public function setQuantidadeInicial(int $quantidadeInicial): static
     {
-        $this->quantidade_inicial = $quantidade_inicial;
+        $this->quantidadeInicial = $quantidadeInicial;
 
         return $this;
     }
@@ -120,6 +123,18 @@ class Produto
     public function setUrl(?string $url): static
     {
         $this->url = $url;
+
+        return $this;
+    }
+
+    public function getQuantidadeDisponivel(): ?int
+    {
+        return $this->quantidadeDisponivel;
+    }
+
+    public function setQuantidadeDisponivel(int $quantidadeDisponivel): static
+    {
+        $this->quantidadeDisponivel = $quantidadeDisponivel;
 
         return $this;
     }

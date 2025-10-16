@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class AppController extends AbstractController
 {
-    #[Route(path: '/app', name: 'app_app')]
+    #[Route(path: '/', name: 'app_app')]
     public function __invoke()
     {
         return $this->render('index.html.twig');

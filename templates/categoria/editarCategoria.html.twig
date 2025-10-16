@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MScode - Editar Categoria{% endblock %}
+
+{% block body %}
+
+    <div class="container py-5">
+        <div class="mb-4">
+            <h1>Editar categoria</h1>
+        </div>
+
+        <div class="w-50 mt-2">
+            {% include "mensagens.html.twig" %}
+            <form action="{{ path('editar_categoria_salvar', {categoria: categoria.id}) }}" method="POST">
+                <div class="mb-3">
+                    <label for="nome" class="form-label">Nome:</label>
+                    
+                    <input  type="text" 
+                            class="form-control" 
+                            id="nome" 
+                            name="nome"
+                            minlength="3" 
+                            value="{{ categoria.nome }}"
+                            required
+                    >
+                </div>
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+    {% include 'footer.html.twig' %}
+{% endblock %}

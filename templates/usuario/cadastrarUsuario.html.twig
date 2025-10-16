@@ -1,41 +1,56 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}MScode - Cadastrar Usuario{% endblock %}
+
 {% block body %}
-    <div class="border-bottom mb-2">
-        <div class="container">
-            <header class="d-flex flex-wrap justify-content-center align-items-center py-3">
-                <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-                    <span class="fs-4">Symfony</span>
-                </a>
-            </header>
+    <main>
+        <div class="container py-5">
+            <div class="mb-4">
+                <h1>Novo usuário</h1>
+            </div>
+
+            <div class="w-50 mt-2">
+                {% include "mensagens.html.twig" %}
+     
+                {{ form_start(registrationForm) }}
+                    <div class="mb-3">
+                        {{ form_label(registrationForm.nome) }}
+                        {{ form_widget(registrationForm.nome) }}
+                        <div class="text-danger">
+                            {{ form_errors(registrationForm.nome) }}
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form_label(registrationForm.email) }}
+                        {{ form_widget(registrationForm.email) }}
+                        <div class="text-danger">
+                            {{ form_errors(registrationForm.email) }}
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form_label(registrationForm.plainPassword.first) }}
+                        {{ form_widget(registrationForm.plainPassword.first) }}
+                        <div class="text-danger">
+                            {{ form_errors(registrationForm.plainPassword.first) }}
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form_label(registrationForm.plainPassword.second) }}
+                        {{ form_widget(registrationForm.plainPassword.second) }}
+                        <div class="text-danger">
+                            {{ form_errors(registrationForm.plainPassword) }}
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100">Criar Conta</button>
+                
+                {{ form_end(registrationForm) }}
+            </div>
         </div>
-    </div>
+    </main>
+    {% include 'footer.html.twig' %}
 
-    <div class="container py-5">
-        <div class="mb-4">
-            <h1>Novo usuario</h1>
-        </div>
-
-        <div class="w-50 mt-2">
-            {% include "mensagens.html.twig" %}
-            <form action="{{ path('cadastrar_usuario_salvar') }}" method="POST">
-                <div class="mb-3">
-                    <label for="nome" class="form-label">Nome:</label>
-                    <input type="text" class="form-control" id="nome" name="nome" minlength="3" required>
-                </div>
-
-                <div class="mb-3">
-                    <label for="senha" class="form-label">Senha:</label>
-                    <input type="password" class="form-control" id="senha" name="senha" minlength="3" required>
-                </div>
-
-                <div class="mb-3">
-                    <label for="senha" class="form-label">Confirme a senha:</label>
-                    <input type="password" class="form-control" id="senha" name="senha" minlength="3" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Cadastrar</button>
-            </form>
-        </div>
-    </div>
 {% endblock %}
-

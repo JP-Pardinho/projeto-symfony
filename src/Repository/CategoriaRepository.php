@@ -27,4 +27,15 @@ class CategoriaRepository extends ServiceEntityRepository
         $this->getEntityManager()->remove($categoria);
         $this->getEntityManager()->flush();
     }
+
+    public function findNamebyId(int $id): ?string
+    {
+        $result = $this->query->select('categoria', 'id = ' . $id);
+
+        if ($result && count($result) > 0) {
+            $categoria = $result[0];
+            return $categoria['nome'];
+        }
+        return null;
+    }
 }
